@@ -1,0 +1,19 @@
+ base color:
+      #BF0426; eye red
+      #9ABF11; light green --#283593
+      #87A617; mid green  -- #1a237e
+      #BF5B04; orange
+      #0D0504; black
+
+
+deep base color:
+	#730217	eye red
+	#58731F mid green
+	#87A617 light green
+	#403709 brown
+	#BF5B04 orange
+
+原來的:
+	mid blue #1a237e;
+	shadow	#0e1442;
+	light blue #283593;
