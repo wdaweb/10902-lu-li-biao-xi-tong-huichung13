@@ -21,9 +21,16 @@
   $jcs = $jobc->all();
 
   ?>
+   <!-- <div id="cover" style="display:none; ">
+        <div id="coverr">
+            <a style="position:absolute; right:3px; top:4px; cursor:pointer; z-index:9999;"
+                onclick="cl(&#39;#cover&#39;)">X</a>
+            <div id="cvr" style="position:fixed; width:99%; height:100%; margin:auto; z-index:9898; background:white;"></div>
+        </div>
+    </div> -->
   <div id="cover" style="display:none; ">
     <div id="coverr">
-      <a style="position:absolute; right:3px; top:4px; cursor:pointer; z-index:9999;" onclick="cl(&#39;#cover&#39;)">X</a>
+      <a style="color: black; position: absolute;; right:500px; top:200px; cursor:pointer; z-index:9999;" onclick="cl(&#39;#cover&#39;)">X</a>
       <div id="cvr" style="position: fixed;top: 200px;left:300px; width:50%; height:40%; margin:auto; z-index:9898;background:white;"></div>
     </div>
   </div>
@@ -145,12 +152,13 @@
       <div class="skills-soft">
         <h3><i class="fas fa-bezier-curve"></i>Job conditions</h3>
 
-        <input name="jobc" type="button" onclick="op(&#39;#cover&#39;,&#39;#cvr&#39;,&#39;modal/news.php&#39;)" value="新增求職條件">
+        <input name="jobc" type="button" onclick="op(&#39;#cover&#39;,&#39;#cvr&#39;,&#39;modal/jobc.php&#39;)" value="新增求職條件">
 <?php
   foreach ($jcs as $jc) {
+    $isChk = ($jc['sh'] == 1) ? 'checked' : '';
   ?>
   <form action="api/add.php" method="post">
-        <li><?=$jc['text'];?></li>
+        <li><?=$jc['text'];?> <input type="radio" name="sh" value="<?=$jc['id'];?>" <?=$isChk;?>></li>
         
         </form>
 

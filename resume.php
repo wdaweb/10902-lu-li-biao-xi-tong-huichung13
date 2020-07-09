@@ -15,7 +15,7 @@
   <?php include_once "base.php";
  $ab = $about->find(1);
   $aa=$autob->find(1);
-  $jcs = $jobc->all();
+  $jcs = $jobc->all(['sh'=>1]);
   
   ?>
   <div class="resume">
@@ -125,6 +125,7 @@
         
         <?php
   foreach ($jcs as $jc) {
+    $isChk = ($jc['sh'] == 1) ? 'checked' : '';
   ?>
         <li><?=$jc['text'];?></li>
         
@@ -178,7 +179,7 @@
   ?>
   <div id="login"
     style="width: 80px; height: 80px; background: #BF0426; border-radius: 50%;position: fixed; bottom:0;right:0;">
-    <a href="login.php" style="color: white; padding-top: 30px; padding-left:10px;">Login</a>
+    <a href="login.php" style="color: white; padding-top: 30px; padding-left:18px;">Login</a>
   </div>
 <?php
   }else{
