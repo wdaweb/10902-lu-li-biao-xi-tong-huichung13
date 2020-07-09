@@ -13,8 +13,10 @@
 
 <body>
   <?php include_once "base.php";
-  $autob=new DB('autob');
+ $ab = $about->find(1);
   $aa=$autob->find(1);
+  $jcs = $jobc->all();
+  
   ?>
   <div class="resume">
     <div class="base">
@@ -31,16 +33,21 @@
       <div class="about">
         <h3>About Me</h3><?=$aa['text'];?>
       </div>
+
+      
+
       <div class="contact">
         <h3>Contact Me</h3>
-        <div class="call"><a href="tel:123-456-7890"><i class="fas fa-phone"></i><span>123-456-7890</span></a></div>
-        <div class="address"><a href="https://goo.gl/maps/fiTBGT6Vnhy"><i class="fas fa-map-marker"></i><span>Taipei,
-              Taiwan</span></a>
+        <div class="call"><a href="tel:123-456-7890"><i class="fas fa-phone"></i><span><?=$ab['tel'];?></span></a></div>
+        <div class="address"><a href="https://goo.gl/maps/fiTBGT6Vnhy"><i class="fas fa-map-marker"></i><span><?=$ab['live'];?>
+            </span></a>
         </div>
-        <div class="email"><a href="mailto:frog@gmail.com"><i class="fas fa-envelope"></i><span>frogC</span></a></div>
-        <div class="website"><a href="http://frog.com/" target="_blank"> <i
-              class="fas fa-home"></i><span>frogC.com</span></a></div>
+        <div class="email"><a href="mailto:frog@gmail.com"><i class="fas fa-envelope"></i><span><?=$ab['email'];?></span></a></div>
+        <div class="website"><a href="http://frog.com/" target="_blank"> <i class="fas fa-home"></i><span><?=$ab['com'];?></span></a></div>
       </div>
+
+  
+
       <div class="follow">
         <h3>Follow Me</h3>
         <div class="box">
@@ -114,8 +121,18 @@
         </ul>
       </div>
       <div class="skills-soft">
-        <h3><i class="fas fa-bezier-curve"></i>Software Skills</h3>
-        <ul>
+        <h3><i class="fas fa-bezier-curve"></i>Job conditions</h3>
+        
+        <?php
+  foreach ($jcs as $jc) {
+  ?>
+        <li><?=$jc['text'];?></li>
+        
+
+  <?php }   ?>
+        
+        <!-- <h3><i class="fas fa-bezier-curve"></i>Software Skills</h3> -->
+        <!-- <ul>
           <li data-percent="60">
             <svg viewbox="0 0 100 100">
               <circle cx="50" cy="50" r="45"></circle>
@@ -140,8 +157,8 @@
               <circle class="cbar" cx="50" cy="50" r="45"></circle>
             </svg><span>Dreamweaver</span><small></small>
           </li>
-        </ul>
-      </div>
+        </ul>-->
+      </div> 
       <div class="interests">
         <h3><i class="fas fa-star"></i>Portfolio</h3>
         <div class="interests-items">
@@ -155,12 +172,27 @@
 
   </div>
   </div>
+  <?php
+  if (empty($_SESSION['admin'])){
+    
+  ?>
   <div id="login"
     style="width: 80px; height: 80px; background: #BF0426; border-radius: 50%;position: fixed; bottom:0;right:0;">
-    <!-- <div id="login" style="width: 80px; height: 80px; background: #BF0426; border-radius: 50%;position: relative;float:right;"> -->
-    <!-- <div id="login" class="position-fixed" style="width: 50px; height: 50px; background: red; border-radius: 50%;"> -->
     <a href="login.php" style="color: white; padding-top: 30px; padding-left:10px;">Login</a>
   </div>
+<?php
+  }else{
+?>
+<div id="logout"
+    style="width: 80px; height: 80px; background: #BF0426; border-radius: 50%;position: fixed; bottom:0;right:0;">
+    <a href="resume.php" style="color: white; padding-top: 30px; padding-left:10px;">Logout</a>
+  </div>
+  <?php
+unset($_SESSION['admin']);
+}
+  ?>
+
+  
   <script>
     (function () {
       $(".skills-prog li")

@@ -9,8 +9,8 @@
                     <td width="7%">刪除</td>
                 </tr>
                 <?php
-                    $table=$do;
-                    $db=new DB('news');
+                    // $table=$do;
+                    $db=new DB('autob');
 
                     //產生分頁所需的各個變數及相應的數值
                     $total=$db->count();
