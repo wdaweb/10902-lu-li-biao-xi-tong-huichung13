@@ -21,13 +21,7 @@
   $jcs = $jobc->all();
 
   ?>
-   <!-- <div id="cover" style="display:none; ">
-        <div id="coverr">
-            <a style="position:absolute; right:3px; top:4px; cursor:pointer; z-index:9999;"
-                onclick="cl(&#39;#cover&#39;)">X</a>
-            <div id="cvr" style="position:fixed; width:99%; height:100%; margin:auto; z-index:9898; background:white;"></div>
-        </div>
-    </div> -->
+   
   <div id="cover" style="display:none; ">
     <div id="coverr">
       <a style="color: black; position: absolute;; right:500px; top:200px; cursor:pointer; z-index:9999;" onclick="cl(&#39;#cover&#39;)">X</a>
@@ -44,6 +38,9 @@
         <div class="info">
           <h1 class="name">Chung, Joyce</h1>
           <h2 class="job">Admin page</h2>
+          
+          <input type="button" name="about" onclick="op(&#39;#cover&#39;,&#39;#cvr&#39;,&#39;modal/about.php&#39;)" value="更換圖片">
+        
         </div>
       </div>
       <div class="about">
@@ -59,7 +56,7 @@
       </form>
 
       
-      <form action="api/edit.php" method="post">
+      <form action="api/edit_info.php" method="post">
         <div class="contact">
           <h3>Contact Me</h3>
           <div class="call"><i class="fas fa-phone"></i><textarea name="tel" style='width:70%;height:20px'><?= $ab['tel']; ?></textarea></div>
@@ -103,10 +100,7 @@
             <p>Bachelor of MIS<br>(Management Information System)</p><small>SHU</small><small>Jan. 2001 -
               Apr. 2004</small>
           </li>
-          <!-- <li><span>Computer Science</span><small>Edmonds Community College</small><small>Sept. 2014 - Dec. 2015</small>
-          </li>
-          <li><span>High School</span><small>Henry M. Jackson High School</small><small>Jan. 2013 - Jun. 2015</small>
-          </li> -->
+       
         </ul>
       </div>
       <div class="skills-prog">
@@ -153,16 +147,23 @@
         <h3><i class="fas fa-bezier-curve"></i>Job conditions</h3>
 
         <input name="jobc" type="button" onclick="op(&#39;#cover&#39;,&#39;#cvr&#39;,&#39;modal/jobc.php&#39;)" value="新增求職條件">
+        <form action="api/edit.php" method="post"  enctype="multipart/form-data">
 <?php
   foreach ($jcs as $jc) {
     $isChk = ($jc['sh'] == 1) ? 'checked' : '';
   ?>
-  <form action="api/add.php" method="post">
-        <li><?=$jc['text'];?> <input type="radio" name="sh" value="<?=$jc['id'];?>" <?=$isChk;?>></li>
+  
+        <li><?=$jc['text'];?><input type="checkbox" name="sh[]" value="<?=$jc['id'];?>" <?=$isChk;?>>  
+        <span><input type="checkbox" name="del[]" value="<?=$jc['id'];?>"></span>    
+        </li>
         
-        </form>
+        <input type="hidden" name="id[]" value="<?=$jc['id'];?>">
+        
 
   <?php }   ?>
+  <input type="hidden" name="table" value="jobc">
+  <input type="submit" value="顯示/刪除確定"><input type="reset" value="重置">
+  </form>
 
         <!-- <ul>
           <li data-percent="60">
