@@ -1,0 +1,9 @@
+簡單明瞭，方塊風 
+
+搭配青蛙的顏色:
+base color:
+      #BF0426; eye red
+      #9ABF11; light green 
+      #87A617; mid green 
+      #BF5B04; orange
+      #0D0504; black

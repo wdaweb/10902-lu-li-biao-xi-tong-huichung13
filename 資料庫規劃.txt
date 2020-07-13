@@ -1,0 +1,20 @@
+預計有五張表，彼此間無關聯
+1.admin 管理者
+含id/acc/pw 
+三個欄位
+
+2. about 關於
+含id/img/tel/live
+四個欄位
+
+3.autob 自傳
+含id/text
+兩個欄位
+
+4. exp 學經歷
+含id/scl/work/other
+四個欄位
+
+5. port 作品集
+含id/name/text
+三個欄位
